@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     descrizione
   } = req.body
 
-  const obj ={id:id, titolo:titolo, descrizione:descrizione}
+  
   const status = {}
   if (titolo) {
   status.code = 'ok inserimento effettuato'
@@ -40,7 +40,7 @@ router.put('/', (req, res) => {
     descrizione
   } = req.body
 
-  const obj ={id:id, titolo:titolo, descrizione:descrizione}
+ 
 
   const status = {}
   if(id){
@@ -60,7 +60,7 @@ router.delete('/', (req, res) => {
     descrizione
   } = req.body
 
-  const obj ={id:id, titolo:titolo, descrizione:descrizione}
+  
 
   const status = {}
   if(id){

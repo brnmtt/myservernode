@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/brnmtt/myservernode#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.0"
   }
 }

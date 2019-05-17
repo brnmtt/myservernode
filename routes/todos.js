@@ -15,53 +15,60 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
+   const {
+    id,
+    titolo,
+    descrizione
+  } = req.body
+
+  const obj ={id:id, titolo:titolo, descrizione:descrizione}
+  const status = {}
+  if (titolo) {
+  status.code = 'ok inserimento effettuato'
+  } else {
+  status.code = 'error'
+  status.message = 'titolo obbligatorio'  
+  }
+  res.send(status)
+})
+
+router.put('/', (req, res) => {
  
   const {
     id,
     titolo,
-    descrizione,
-    operazione
+    descrizione
   } = req.body
 
   const obj ={id:id, titolo:titolo, descrizione:descrizione}
 
   const status = {}
-  //in base al campo operazione svolgo una diversa operazione
-  if(operazione){
-    //inserimento
-    if(operazione === "inserimento"){
-      if (titolo) {
-        status.code = 'ok inserimento effettuato'
-      } else {
-        status.code = 'error'
-        status.message = 'titolo obbligatorio'
-      }
-    //aggiornamento
-    }else if(operazione === "aggiornamento"){
-      if(id){
-        status.code = "dati corretti aggiornamento effettuato"
-      }else{
-        status.code = 'error'
-        status.message = 'id obbligatorio'
-      }
-    //eliminazione  
-    }else if(operazione === "eliminazione"){
-      if(id){
-        status.code = "eliminazione effettuata"
-      }else{
-        status.code = 'error'
-        status.message = 'id obbligatorio'
-      }
-    }else{
-        status.code = 'error'
-        status.message = 'operazione non valida'  
-    }
+  if(id){
+    status.code = "dati corretti aggiornamento effettuato"
   }else{
     status.code = 'error'
-    status.message = 'operazione obbligatoria'
-  }
-  
-  
+    status.message = 'id obbligatorio'
+  } 
+  res.send(status)
+})
+
+router.delete('/', (req, res) => {
+ 
+  const {
+    id,
+    titolo,
+    descrizione
+  } = req.body
+
+  const obj ={id:id, titolo:titolo, descrizione:descrizione}
+
+  const status = {}
+  if(id){
+    status.code = "eliminazione effettuata"
+  }else{
+    status.code = 'error'
+    status.message = 'id obbligatorio'
+  } 
   res.send(status)
 })
 
